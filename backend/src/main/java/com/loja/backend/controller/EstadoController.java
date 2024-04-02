@@ -38,7 +38,7 @@ public class EstadoController {
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado){
+    public Estado alterar(@RequestBody  Estado estado){
         return estadoService.alterar(estado);
     }
 
