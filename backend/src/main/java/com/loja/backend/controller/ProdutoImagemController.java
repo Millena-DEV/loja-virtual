@@ -1,11 +1,9 @@
 package com.loja.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import com.loja.backend.entity.Estado;
-import com.loja.backend.service.EstadoService;
-
-
+import org.springframework.web.multipart.MultipartFile;
+import com.loja.backend.entity.ProdutoImagem;
+import com.loja.backend.service.ProdutoImagemService;
 
 import java.util.List;
 
@@ -18,33 +16,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/produtoImagens")
 
-public class EstadoController {
+public class ProdutoImagemController {
     
     @Autowired
-    private EstadoService estadoService;
+    private ProdutoImagemService ImagemService;
     
     @GetMapping("/")
-    public List<Estado> buscarTodos(){
-       return estadoService.buscarTodos();
+    public List<ProdutoImagem> buscarTodos(){
+       return ImagemService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado novoEstado){
-        return estadoService.inserir(novoEstado);
+    public ProdutoImagem inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file){
+        return ImagemService.inserir(idProduto, file);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody  Estado alteraEstado){
-        return estadoService.alterar(alteraEstado);
+    public ProdutoImagem alterar(@RequestBody  ProdutoImagem alteraImagem){
+        return ImagemService.alterar(alteraImagem);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        estadoService.excluir(id);
+        ImagemService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }

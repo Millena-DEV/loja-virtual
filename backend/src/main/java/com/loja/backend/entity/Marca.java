@@ -1,6 +1,8 @@
 package com.loja.backend.entity;
+
 import java.io.Serializable;
 import java.util.Date;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,26 +13,20 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
-@Entity
-@Table(name="Estado")
-@Data
-@SequenceGenerator(name = "seq_estado", sequenceName = "seq_estado", allocationSize = 1, initialValue = 1)
-public class Estado implements Serializable  {
-    private static final long seialVersionUID = 1L;
- 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_estado")
-    private Long idEstado;
 
+@Entity
+@Data
+@Table(name="Marca")
+@SequenceGenerator(name = "seq_marca", sequenceName = "seq_marca", allocationSize = 1, initialValue = 1)
+public class Marca  implements Serializable {
+    private static final long seialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_marca")
+    private long idMarca;
     private String nome;
-    private String sigla;
-    @Temporal(TemporalType.DATE)
+     @Temporal(TemporalType.DATE)
     private Date dataCriacao;
     @Temporal(TemporalType.DATE)
     private Date dataAtualizacao;
 
-	
-	
-    
-    
 }

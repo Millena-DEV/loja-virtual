@@ -1,7 +1,5 @@
 package com.loja.backend.service;
 
-
-
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +22,8 @@ public class EstadoService {
 
     public Estado inserir( @RequestBody Estado estado) {
         estado.setDataCriacao(new Date());
-        Estado estadoNovo = er.saveAndFlush(estado);
+        Estado estadoNovo  = new Estado();// configure o estado
+        er.saveAndFlush(estado); 
         return estadoNovo;
     }
 

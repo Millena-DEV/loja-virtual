@@ -2,10 +2,8 @@ package com.loja.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loja.backend.entity.Estado;
-import com.loja.backend.service.EstadoService;
-
-
+import com.loja.backend.entity.Categoria;
+import com.loja.backend.service.CategoriaService;
 
 import java.util.List;
 
@@ -20,31 +18,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/categoria")
 
-public class EstadoController {
+public class CategoriaController {
     
     @Autowired
-    private EstadoService estadoService;
+    private CategoriaService categoriaService;
     
     @GetMapping("/")
-    public List<Estado> buscarTodos(){
-       return estadoService.buscarTodos();
+    public List<Categoria> buscarTodos(){
+       return categoriaService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado novoEstado){
-        return estadoService.inserir(novoEstado);
+    public Categoria inserir(@RequestBody Categoria novaCategoria){
+        return categoriaService.inserir(novaCategoria);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody  Estado alteraEstado){
-        return estadoService.alterar(alteraEstado);
+    public Categoria alterar(@RequestBody  Categoria alteraCategoria){
+        return categoriaService.alterar(alteraCategoria);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        estadoService.excluir(id);
+        categoriaService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }

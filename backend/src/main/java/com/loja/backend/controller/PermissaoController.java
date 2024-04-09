@@ -2,9 +2,8 @@ package com.loja.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loja.backend.entity.Estado;
-import com.loja.backend.service.EstadoService;
-
+import com.loja.backend.entity.Permissao;
+import com.loja.backend.service.PermissaoService;
 
 
 import java.util.List;
@@ -20,31 +19,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/permissao")
 
-public class EstadoController {
+public class PermissaoController {
     
     @Autowired
-    private EstadoService estadoService;
+    private PermissaoService permissaoService;
     
     @GetMapping("/")
-    public List<Estado> buscarTodos(){
-       return estadoService.buscarTodos();
+    public List<Permissao> buscarTodos(){
+       return permissaoService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado novoEstado){
-        return estadoService.inserir(novoEstado);
+    public Permissao inserir(@RequestBody Permissao novaPermissao){
+        return permissaoService.inserir(novaPermissao);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody  Estado alteraEstado){
-        return estadoService.alterar(alteraEstado);
+    public Permissao alterar(@RequestBody  Permissao alteraPermissao){
+        return permissaoService.alterar(alteraPermissao);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        estadoService.excluir(id);
+        permissaoService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }

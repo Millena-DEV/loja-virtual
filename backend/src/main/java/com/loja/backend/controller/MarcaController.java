@@ -1,9 +1,8 @@
 package com.loja.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import com.loja.backend.entity.Estado;
-import com.loja.backend.service.EstadoService;
+import com.loja.backend.entity.Marca;
+import com.loja.backend.service.MarcaService;
 
 
 
@@ -20,31 +19,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/api/estado")
+@RequestMapping("/api/marca")
 
-public class EstadoController {
+public class MarcaController {
     
     @Autowired
-    private EstadoService estadoService;
+    private MarcaService marcaService;
     
     @GetMapping("/")
-    public List<Estado> buscarTodos(){
-       return estadoService.buscarTodos();
+    public List<Marca> buscarTodos(){
+       return marcaService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado novoEstado){
-        return estadoService.inserir(novoEstado);
+    public Marca inserir(@RequestBody Marca novaMarca){
+        return marcaService.inserir(novaMarca);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody  Estado alteraEstado){
-        return estadoService.alterar(alteraEstado);
+    public Marca alterar(@RequestBody  Marca alteraMarca){
+        return marcaService.alterar(alteraMarca);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        estadoService.excluir(id);
+        marcaService.excluir(id);
         return ResponseEntity.ok().build();
     }
 }
