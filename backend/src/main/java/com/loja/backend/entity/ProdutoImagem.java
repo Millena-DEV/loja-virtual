@@ -14,10 +14,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
+import lombok.Data;
 
-@Entity 
+@Entity
 @Data
-@Table(name="ProdutoImagem")
+@Table(name = "ProdutoImagem")
 @SequenceGenerator(name = "seq_imagens", sequenceName = "seq_imagens", allocationSize = 1, initialValue = 1)
 public class ProdutoImagem implements Serializable {
     private static final long seialVersionUID = 1L;
@@ -34,6 +35,4 @@ public class ProdutoImagem implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataAtualizacao;
 
-   
-    
 }

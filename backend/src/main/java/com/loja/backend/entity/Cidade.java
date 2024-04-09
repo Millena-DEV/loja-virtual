@@ -14,16 +14,17 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
+
 @Entity
-@Table(name="Cidade")
+@Table(name = "Cidade")
 @Data
 @SequenceGenerator(name = "seq_cidade", sequenceName = "seq_cidade", allocationSize = 1, initialValue = 1)
-public class Cidade  implements Serializable{
+public class Cidade implements Serializable {
     private static final long seialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cidade")
     private Long idCidade;
-    @ManyToOne()// Relação muitos pra 1. muitas cidades pra 1 estado
+    @ManyToOne() // Relação muitos pra 1. muitas cidades pra 1 estado
     @JoinColumn(name = "idEstado") // nome da coluna de relacionamento, guarda o id estado
     private Estado estado;
     private String nome;

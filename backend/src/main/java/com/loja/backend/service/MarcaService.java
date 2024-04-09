@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.loja.backend.entity.Marca;
-import com.loja.backend.entity.Produto;
 import com.loja.backend.repository.MarcaRepository;
-import com.loja.backend.repository.ProdutoRepository;
 
 
 @Service
